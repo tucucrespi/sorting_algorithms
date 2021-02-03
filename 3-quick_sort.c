@@ -10,33 +10,33 @@
  **/
 int _split(int *array, int first, int last, size_t size)
 {
-int pivot;
-int i = first;
-int j, temp;
+	int pivot;
+	int i = first;
+	int j, temp;
 
-pivot = array[last];
-for (j = first; j < last; j++)
-{
-if (array[j] <= pivot)
-{
+	pivot = array[last];
+	for (j = first; j < last; j++)
+	{
+		if (array[j] <= pivot)
+		{
 
-temp = array[j];
-array[j] = array[i];
-array[i] = temp;
-if (i != j)
-print_array(array, size);
-i++;
+			temp = array[j];
+			array[j] = array[i];
+			array[i] = temp;
+			if (i != j)
+				print_array(array, size);
+			i++;
 
-}
-}
+		}
+	}
 
-temp = array[i];
-array[i] = array[j];
-array[j] = temp;
-if (i != j)
-print_array(array, size);
+	temp = array[i];
+	array[i] = array[j];
+	array[j] = temp;
+	if (i != j)
+		print_array(array, size);
 
-return (i);
+	return (i);
 }
 
 /**
@@ -50,14 +50,14 @@ return (i);
 void quick_sort_parts(int *array, int first, int last, size_t size)
 {
 
-int pivot;
+	int pivot;
 
-if (first < last)
-{
-pivot = _split(array, first, last, size);
-quick_sort_parts(array, first, (pivot - 1), size);
-quick_sort_parts(array, (pivot + 1), last, size);
-}
+	if (first < last)
+	{
+		pivot = _split(array, first, last, size);
+		quick_sort_parts(array, first, (pivot - 1), size);
+		quick_sort_parts(array, (pivot + 1), last, size);
+	}
 }
 
 /**
@@ -67,8 +67,8 @@ quick_sort_parts(array, (pivot + 1), last, size);
  **/
 void quick_sort(int *array, size_t size)
 {
-if (array == NULL || size < 2)
-return;
+	if (array == NULL || size < 2)
+		return;
 
-quick_sort_parts(array, 0, size - 1, size);
+	quick_sort_parts(array, 0, size - 1, size);
 }
